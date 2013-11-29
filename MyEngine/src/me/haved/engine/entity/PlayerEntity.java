@@ -1,9 +1,8 @@
 package me.haved.engine.entity;
 
-public class PlayerEntity extends Entity
+import me.haved.engine.render.Camera;
+
+public interface PlayerEntity
 {
-	public void updateCamera()
-	{
-		
-	}
+	public void updateCamera(Camera cam);
 }

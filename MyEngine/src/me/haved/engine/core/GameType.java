@@ -9,7 +9,7 @@ public abstract class GameType
 	
 	public abstract String getWorldLocation();
 	
-	public abstract Entity getEntity(String name);
+	public abstract Class<? extends Entity> getEntity(String name);
 	
-	public abstract PlayerEntity getPlayerEntity();
+	public abstract Class<? extends PlayerEntity> getPlayerEntity();
 }

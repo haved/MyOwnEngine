@@ -3,6 +3,7 @@ package me.haved.game.core;
 import me.haved.engine.core.GameType;
 import me.haved.engine.entity.Entity;
 import me.haved.engine.entity.PlayerEntity;
+import me.haved.game.entity.MyPlayerEntity;
 
 public class MyGameType extends GameType
 {
@@ -19,14 +20,14 @@ public class MyGameType extends GameType
 	}
 
 	@Override
-	public Entity getEntity(String name)
+	public Class<? extends Entity> getEntity(String name)
 	{
 		return null;
 	}
 
 	@Override
-	public PlayerEntity getPlayerEntity()
+	public Class<? extends PlayerEntity> getPlayerEntity()
 	{
-		return null;
+		return MyPlayerEntity.class;
 	}
 }
