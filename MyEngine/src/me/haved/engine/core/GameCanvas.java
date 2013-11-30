@@ -1,8 +1,13 @@
 package me.haved.engine.core;
 
+import me.haved.engine.entity.PlayerEntity;
+import me.haved.engine.world.World;
+
 public class GameCanvas
 {
-	public GameType gameType;
+	private GameType gameType;
+	private PlayerEntity playerEntity;
+	private World world;
 	
 	public GameCanvas()
 	{
@@ -24,7 +29,7 @@ public class GameCanvas
 		try
 		{
 			gameType = clazz.newInstance();
-			
+			playerEntity = gameType.getPlayerEntity().newInstance();
 		}
 		catch(Exception e)
 		{
