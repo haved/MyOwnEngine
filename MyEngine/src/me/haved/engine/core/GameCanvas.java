@@ -1,7 +1,10 @@
 package me.haved.engine.core;
 
+import java.io.File;
+
 import me.haved.engine.entity.PlayerEntity;
 import me.haved.engine.world.World;
+import me.haved.engine.world.WorldUniverse;
 
 public class GameCanvas
 {
@@ -30,6 +33,7 @@ public class GameCanvas
 		{
 			gameType = clazz.newInstance();
 			playerEntity = gameType.getPlayerEntity().newInstance();
+			WorldUniverse.loadWorlds(new File(gameType.getWorldLocation()), gameType);
 		}
 		catch(Exception e)
 		{
