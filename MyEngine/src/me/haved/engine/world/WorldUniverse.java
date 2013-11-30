@@ -15,7 +15,6 @@ public final class WorldUniverse
 		{	
 			worlds = new HashMap<String, World>();
 			
-			System.out.println("WorldLoacation:" + worldLocation.getAbsolutePath());
 			File[] files = worldLocation.listFiles();
 			
 			World w;

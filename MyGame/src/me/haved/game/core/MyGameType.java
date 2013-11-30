@@ -32,7 +32,7 @@ public class MyGameType extends GameType
 	@Override
 	public Class<? extends Entity> getEntity(String name)
 	{
-		return entities.get(name.trim());
+		return entities.get(name);
 	}
 
 	@Override

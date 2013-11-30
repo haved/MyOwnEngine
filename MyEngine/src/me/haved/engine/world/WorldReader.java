@@ -31,14 +31,7 @@ public final class WorldReader
 				for(int i = 1; i < parts.length; i++)
 				{
 					args = parts[i].split("=");
-					if(args[0].equalsIgnoreCase("x"))
-					{
-						e.setX(Integer.parseInt(args[1]));
-					}
-					else if(args[0].equalsIgnoreCase("y"))
-					{
-						e.setY(Integer.parseInt(args[1]));
-					}
+					e.setProperty(args[0], args[1]);
 				}
 				entities.add(e);
 			}

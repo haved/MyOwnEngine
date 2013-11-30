@@ -44,4 +44,14 @@ public class Entity
 	{
 		this.y = y;
 	}
+	
+	public boolean setProperty(String propertyName, String value)
+	{
+		switch(propertyName)
+		{
+		case "x":setX(Integer.parseInt(value)); return true;
+		case "y":setY(Integer.parseInt(value)); return true;
+		default:return false;
+		}
+	}
 }
