@@ -12,9 +12,10 @@ public final class WorldUniverse
 	public static void loadWorlds(File worldLocation, GameType gameType)
 	{
 		try
-		{
+		{	
 			worlds = new HashMap<String, World>();
 			
+			System.out.println("WorldLoacation:" + worldLocation.getAbsolutePath());
 			File[] files = worldLocation.listFiles();
 			
 			World w;
@@ -35,5 +36,10 @@ public final class WorldUniverse
 		{
 			e.printStackTrace();
 		}
+	}
+
+	public static World getWorld(String name)
+	{
+		return worlds.get(name);
 	}
 }

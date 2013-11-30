@@ -20,13 +20,13 @@ public class MyGameType extends GameType
 	@Override
 	public String getAssetLocation()
 	{
-		return "./content/assets/";
+		return "bin/content/assets/";
 	}
 
 	@Override
 	public String getWorldLocation()
 	{
-		return "./content/worlds/";
+		return "bin/content/worlds/";
 	}
 
 	@Override

@@ -19,12 +19,12 @@ public class GameCanvas
 	
 	public void update()
 	{
-		
+		world.update();
 	}
 	
 	public void render()
 	{
-		
+		world.render();
 	}
 	
 	public void loadGameType(Class<? extends GameType> clazz)
@@ -41,8 +41,8 @@ public class GameCanvas
 		}
 	}
 	
-	public void setWorld(String world)
+	public void setWorld(String worldName)
 	{
-		
+		world = WorldUniverse.getWorld(worldName);
 	}
 }
