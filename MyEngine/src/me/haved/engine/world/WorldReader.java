@@ -26,7 +26,8 @@ public final class WorldReader
 			{
 				if(s.startsWith("#")) continue;
 				parts = s.split(",");
-				e = gameType.getEntity(parts[0]).newInstance();
+				Class<? extends Entity> clazz = gameType.getEntity(parts[0]);
+				e = clazz.newInstance();
 				for(int i = 1; i < parts.length; i++)
 				{
 					args = parts[i].split("=");
