@@ -45,5 +45,8 @@ public class MainEngine
 		instance = new MainEngine();
 		instance.init(info);
 		instance.start();
+		
+		System.out.println("Natrual shutdown!");
+		System.exit(0);
 	}
 }
