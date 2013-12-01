@@ -25,6 +25,8 @@ public final class WorldReader
 			while((s = reader.readLine()) != null)
 			{
 				if(s.startsWith("#")) continue;
+				s = s.replaceAll(" ", "");
+				System.out.println(s);
 				parts = s.split(",");
 				Class<? extends Entity> clazz = gameType.getEntity(parts[0]);
 				e = clazz.newInstance();
