@@ -3,7 +3,6 @@ package me.haved.engine.core;
 import java.io.File;
 
 import me.haved.engine.entity.PlayerEntity;
-import me.haved.engine.render.RenderEngine;
 import me.haved.engine.world.World;
 import me.haved.engine.world.WorldUniverse;
 
@@ -26,9 +25,6 @@ public class GameCanvas
 	
 	public void render()
 	{
-		RenderEngine.setColor4f(1, 1, 1, 1);
-		RenderEngine.drawRect(100, 100, 100, 100);
-		
 		playerEntity.render();
 		world.render();
 	}

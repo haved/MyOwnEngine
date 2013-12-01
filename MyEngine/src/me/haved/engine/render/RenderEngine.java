@@ -11,6 +11,19 @@ public final class RenderEngine
 		
 	}
 	
+	public static void initOrtho(int width, int height)
+	{
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(0, width, height, 0, 1, -1);
+		glMatrixMode(GL_MODELVIEW);
+	}
+	
+	public static void clearColorBuffer()
+	{
+		glClear(GL_COLOR_BUFFER_BIT);
+	}
+	
 	public static void setColor4f(float red, float green, float blue, float alpha)
 	{
 		glColor4f(red, green, blue, alpha);

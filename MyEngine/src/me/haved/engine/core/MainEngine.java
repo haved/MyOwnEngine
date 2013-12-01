@@ -1,6 +1,7 @@
 package me.haved.engine.core;
 
 import me.haved.engine.lib.InitInfo;
+import me.haved.engine.render.RenderEngine;
 
 public class MainEngine
 {
@@ -20,6 +21,8 @@ public class MainEngine
 		Window.setResizable(info.resizable);
 		Window.setVSync(info.vsych);
 		
+		RenderEngine.initOrtho(info.windowResX, info.windowResY);
+		
 		canvas.loadGameType(info.clazz);
 		canvas.setWorld(info.world);
 	}
@@ -28,10 +31,13 @@ public class MainEngine
 	{
 		while(Window.isCloseRequested() == false)
 		{
+			RenderEngine.clearColorBuffer();
 			canvas.update();
 			canvas.render();
 			Window.update();
 		}
+		
+		Window.dispose();
 	}
 	
 	public static void initEngine(InitInfo info)
