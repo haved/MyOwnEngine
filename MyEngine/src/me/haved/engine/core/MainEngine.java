@@ -39,7 +39,7 @@ public class MainEngine
 			canvas.render();
 			Window.update();
 			
-			Time.startDeltaTimer();
+			Time.stopDeltaTimer();
 		}
 		
 		Window.dispose();

@@ -4,14 +4,14 @@ import me.haved.engine.world.World;
 
 public class Entity
 {
-	protected int x, y;
+	protected float x, y;
 	
 	public Entity()
 	{
 		
 	}
 	
-	public Entity(int x, int y)
+	public Entity(float x, float y)
 	{
 		this.x = x;
 		this.y = y;
@@ -27,22 +27,22 @@ public class Entity
 		
 	}
 	
-	public int getX()
+	public float getX()
 	{
 		return x;
 	}
 
-	public void setX(int x)
+	public void setX(float x)
 	{
 		this.x = x;
 	}
 
-	public int getY()
+	public float getY()
 	{
 		return y;
 	}
 
-	public void setY(int y)
+	public void setY(float y)
 	{
 		this.y = y;
 	}
@@ -51,8 +51,8 @@ public class Entity
 	{
 		switch(propertyName)
 		{
-		case "x":setX(Integer.parseInt(value)); return true;
-		case "y":setY(Integer.parseInt(value)); return true;
+		case "x":setX(Float.parseFloat(value)); return true;
+		case "y":setY(Float.parseFloat(value)); return true;
 		default:return false;
 		}
 	}

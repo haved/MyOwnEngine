@@ -29,4 +29,16 @@ public final class Time
 	{
 		return getDeltaTime();
 	}
+	
+	public static void delay(long ms)
+	{
+		try
+		{
+			Thread.sleep(ms);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
 }

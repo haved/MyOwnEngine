@@ -1,9 +1,11 @@
 package me.haved.game.entity;
 
-import me.haved.engine.entity.Entity;
+import me.haved.engine.entity.MovingEntity;
+import me.haved.engine.lib.Time;
 import me.haved.engine.render.RenderEngine;
+import me.haved.engine.world.World;
 
-public class MyBoxEntity extends Entity
+public class MyBoxEntity extends MovingEntity
 {
 	private int width = 60;
 	private int height = 60;
@@ -14,7 +16,16 @@ public class MyBoxEntity extends Entity
 	
 	public MyBoxEntity()
 	{
+		ySpeed = -1000;
+	}
+	
+	@Override
+	public void update(World world)
+	{
+		super.update(world);
 		
+		ySpeed += 3 * Time.delta();
+		move(world);
 	}
 	
 	@Override
