@@ -1,20 +1,31 @@
 package me.haved.engine.lib;
 
-public class Time
+public final class Time
 {
-	private float deltaTime;
+	private static float startTime;
+	private static float deltaTime;
 	
-	public void setDeltaTime(float newDelta)
+	public static void startDeltaTimer()
 	{
-		this.deltaTime = newDelta;
+		startTime = System.currentTimeMillis();
 	}
 	
-	public float getDeltaTime()
+	public static void stopDeltaTimer()
 	{
-		return this.deltaTime;
+		setDeltaTime(System.currentTimeMillis() - startTime);
 	}
 	
-	public float delta()
+	public static void setDeltaTime(float newDelta)
+	{
+		Time.deltaTime = newDelta;
+	}
+	
+	public static float getDeltaTime()
+	{
+		return Time.deltaTime;
+	}
+	
+	public static float delta()
 	{
 		return getDeltaTime();
 	}
