@@ -2,8 +2,8 @@ package me.haved.engine.lib;
 
 public final class Time
 {
-	private static float startTime;
-	private static float deltaTime;
+	private static long startTime;
+	private static long deltaTime;
 	
 	public static void startDeltaTimer()
 	{
@@ -15,17 +15,17 @@ public final class Time
 		setDeltaTime(System.currentTimeMillis() - startTime);
 	}
 	
-	public static void setDeltaTime(float newDelta)
+	public static void setDeltaTime(long newDelta)
 	{
 		Time.deltaTime = newDelta;
 	}
 	
-	public static float getDeltaTime()
+	public static long getDeltaTime()
 	{
 		return Time.deltaTime;
 	}
 	
-	public static float delta()
+	public static long delta()
 	{
 		return getDeltaTime();
 	}

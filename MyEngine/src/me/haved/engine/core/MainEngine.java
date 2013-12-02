@@ -1,6 +1,7 @@
 package me.haved.engine.core;
 
 import me.haved.engine.lib.InitInfo;
+import me.haved.engine.lib.Time;
 import me.haved.engine.render.RenderEngine;
 
 public class MainEngine
@@ -27,14 +28,18 @@ public class MainEngine
 		canvas.setWorld(info.world);
 	}
 	
-	public void start()
+	public void run()
 	{
 		while(Window.isCloseRequested() == false)
 		{
+			Time.startDeltaTimer();
+			
 			RenderEngine.clearColorBuffer();
 			canvas.update();
 			canvas.render();
 			Window.update();
+			
+			Time.startDeltaTimer();
 		}
 		
 		Window.dispose();
@@ -50,7 +55,7 @@ public class MainEngine
 		
 		instance = new MainEngine();
 		instance.init(info);
-		instance.start();
+		instance.run();
 		
 		System.out.println("Natrual shutdown!");
 		System.exit(0);
