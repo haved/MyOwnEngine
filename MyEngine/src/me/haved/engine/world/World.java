@@ -22,7 +22,7 @@ public class World
 	{
 		for(Entity e:entities)
 		{
-			e.update();
+			e.update(this);
 		}
 	}
 	

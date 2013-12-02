@@ -1,8 +1,10 @@
 package me.haved.engine.entity;
 
+import me.haved.engine.world.World;
+
 public class Entity
 {
-	private int x, y;
+	protected int x, y;
 	
 	public Entity()
 	{
@@ -15,7 +17,7 @@ public class Entity
 		this.y = y;
 	}
 	
-	public void update()
+	public void update(World world)
 	{
 		
 	}

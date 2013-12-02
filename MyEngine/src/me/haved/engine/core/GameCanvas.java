@@ -19,7 +19,7 @@ public class GameCanvas
 	
 	public void update()
 	{
-		playerEntity.update();
+		playerEntity.update(world);
 		world.update();
 	}
 	
