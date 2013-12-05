@@ -18,29 +18,48 @@ public final class WorldReader
 			
 			ArrayList<Entity> entities = new ArrayList<Entity>();
 			
-			String s;
-			String[] parts;
 			Entity e;
-			String[] args;
+			String s;
 			while((s = reader.readLine()) != null)
 			{
 				if(s.startsWith("#")) continue;
-				s = s.replaceAll(" ", "");
-				System.out.println(s);
-				parts = s.split(",");
-				Class<? extends Entity> clazz = gameType.getEntity(parts[0]);
-				e = clazz.newInstance();
-				for(int i = 1; i < parts.length; i++)
+				if(s.startsWith("E-"))
 				{
-					args = parts[i].split("=");
-					e.setProperty(args[0], args[1]);
+					e = getEntityFromString(s.substring(2, s.length()), gameType);
+					if(e != null)
+					{
+						entities.add(e);
+					}
 				}
-				entities.add(e);
 			}
 			
 			reader.close();
 			
 			return new World(entities);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	private static Entity getEntityFromString(String s, GameType gameType)
+	{
+		try
+		{
+			s = s.replaceAll(" ", "");
+			String[] parts = s.split(",");
+			Class<? extends Entity> clazz = gameType.getEntity(parts[0]);
+			Entity e = clazz.newInstance();
+			for(int i = 1; i < parts.length; i++)
+			{
+				String[] args = parts[i].split("=");
+				e.setProperty(args[0], args[1]);
+			}
+			
+			return e;
 		}
 		catch(Exception e)
 		{
