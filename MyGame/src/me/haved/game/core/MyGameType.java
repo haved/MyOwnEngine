@@ -5,9 +5,7 @@ import java.util.HashMap;
 import me.haved.engine.core.GameType;
 import me.haved.engine.entity.Entity;
 import me.haved.engine.entity.PlayerEntity;
-import me.haved.game.entity.MyBoxEntity;
-import me.haved.game.entity.MyFireworkEntity;
-import me.haved.game.entity.MyPlayerEntity;
+import me.haved.game.entity.*;
 
 public class MyGameType extends GameType
 {
@@ -49,7 +47,12 @@ public class MyGameType extends GameType
 	
 	private static void initEntityList()
 	{
-		entities.put("MyBoxEntity", MyBoxEntity.class);
-		entities.put("MyFireworkEntity", MyFireworkEntity.class);
+		addEntityEntry(MyBoxEntity.class);
+		addEntityEntry(SpinningBoxEntity.class);
+	}
+	
+	private static void addEntityEntry(Class<? extends Entity> entity)
+	{
+		entities.put(entity.getSimpleName(), entity);
 	}
 }
