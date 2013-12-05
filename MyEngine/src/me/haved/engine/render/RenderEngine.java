@@ -46,4 +46,15 @@ public final class RenderEngine
 		
 		glPopMatrix();
 	}
+
+	public static void pushTranslation(float x, float y)
+	{
+		glPushMatrix();
+		glTranslatef(x, y, 0);
+	}
+	
+	public static void releaseTransform()
+	{
+		glPopMatrix();
+	}
 }
