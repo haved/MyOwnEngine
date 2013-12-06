@@ -1,12 +1,20 @@
 package me.haved.game.menu;
 
 import me.haved.engine.entity.Entity;
+import me.haved.engine.render.RenderEngine;
 
 public class MyUIButton extends Entity
 {
 	private int width, height;
 	private String text;
 	private String action;
+	
+	@Override
+	public void render()
+	{
+		RenderEngine.setColor4f(1.0f, 0.7f, 0.4f, 1);
+		RenderEngine.drawRect(getX(), getY(), getWidth(), getHeight());
+	}
 	
 	public int getWidth()
 	{
