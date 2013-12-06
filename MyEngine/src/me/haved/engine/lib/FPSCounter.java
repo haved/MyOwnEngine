@@ -9,7 +9,7 @@ public class FPSCounter
 	{
 		frameCount++;
 		
-		if(System.currentTimeMillis() - lastFPSDisplay > 1000)
+		if(System.currentTimeMillis() - lastFPSDisplay >= 1000)
 		{
 			System.out.println("FPS: " + frameCount);
 			lastFPSDisplay = System.currentTimeMillis();
