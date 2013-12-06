@@ -13,6 +13,8 @@ public final class RenderEngine
 	
 	public static void initOrtho(int width, int height)
 	{
+		glDisable(GL_DEPTH_BUFFER_BIT);
+		
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		glOrtho(0, width, height, 0, 1, -1);
