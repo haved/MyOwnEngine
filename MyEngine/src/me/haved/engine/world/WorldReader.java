@@ -49,7 +49,6 @@ public final class WorldReader
 	{
 		try
 		{
-			s = s.replaceAll(" ", "");
 			String[] parts = s.split(",");
 			Class<? extends Entity> clazz = gameType.getEntity(parts[0]);
 			Entity e = clazz.newInstance();
