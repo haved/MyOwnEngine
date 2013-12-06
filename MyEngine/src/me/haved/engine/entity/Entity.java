@@ -49,6 +49,8 @@ public class Entity
 	
 	public boolean setProperty(String propertyName, String value)
 	{
+		/*if(super.setProperty(propertyName, value)) return true;*/
+		
 		switch(propertyName)
 		{
 		case "x":setX(Float.parseFloat(value)); return true;
