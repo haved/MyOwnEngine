@@ -1,13 +1,15 @@
 package me.haved.engine.core;
 
+import me.haved.engine.lib.FPSCounter;
 import me.haved.engine.lib.InitInfo;
 import me.haved.engine.lib.Time;
 import me.haved.engine.render.RenderEngine;
 
 public class MainEngine
 {
-	private static MainEngine instance;
+	private static FPSCounter fpsCounter = new FPSCounter();
 	
+	private static MainEngine instance;
 	private GameCanvas canvas;
 	
 	public MainEngine()
@@ -39,6 +41,7 @@ public class MainEngine
 			canvas.render();
 			Window.update();
 			
+			fpsCounter.newFrame();
 			Time.stopDeltaTimer();
 		}
 		
