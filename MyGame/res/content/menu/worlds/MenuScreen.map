@@ -1,0 +1,1 @@
+E-MyUiButton,      x=100,y=100,width=400,height=40,text=Start_new_game,action=startNewGame
