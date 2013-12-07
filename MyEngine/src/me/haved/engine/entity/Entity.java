@@ -4,6 +4,8 @@ import me.haved.engine.world.World;
 
 public class Entity
 {
+	private boolean isAlive = true;
+	
 	protected float x, y;
 	
 	public Entity()
@@ -25,6 +27,16 @@ public class Entity
 	public void render()
 	{
 		
+	}
+	
+	public void kill()
+	{
+		isAlive = false;
+	}
+	
+	public boolean isAlive()
+	{
+		return isAlive;
 	}
 	
 	public float getX()
