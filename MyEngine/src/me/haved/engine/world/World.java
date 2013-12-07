@@ -2,19 +2,23 @@ package me.haved.engine.world;
 
 import java.util.ArrayList;
 
+import me.haved.engine.core.GameType;
 import me.haved.engine.entity.Entity;
 
 public class World
 {
+	private GameType gameType;
+	
 	private ArrayList<Entity> entities;
 	
-	public World()
+	public World(GameType gameType)
 	{
-		entities = new ArrayList<Entity>();
+		this(gameType, new ArrayList<Entity>());
 	}
 	
-	public World(ArrayList<Entity> entities)
+	public World(GameType gameType, ArrayList<Entity> entities)
 	{
+		this.gameType = gameType;
 		this.entities = entities;
 	}
 	
@@ -32,5 +36,10 @@ public class World
 		{
 			e.render();
 		}
+	}
+
+	public GameType getGameType()
+	{
+		return gameType;
 	}
 }
