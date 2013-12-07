@@ -40,6 +40,12 @@ public class MyGameType extends GameType
 		return MyPlayerEntity.class;
 	}
 	
+	@Override
+	public void inGameActionCalled(String action, Entity source)
+	{
+		
+	}
+	
 	static
 	{
 		initEntityList();

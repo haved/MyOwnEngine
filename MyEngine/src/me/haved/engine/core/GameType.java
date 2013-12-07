@@ -12,4 +12,6 @@ public abstract class GameType
 	public abstract Class<? extends Entity> getEntity(String name);
 	
 	public abstract Class<? extends PlayerEntity> getPlayerEntity();
+
+	public abstract void inGameActionCalled(String action, Entity source);
 }

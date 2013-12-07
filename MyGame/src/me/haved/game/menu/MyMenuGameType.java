@@ -34,6 +34,12 @@ public class MyMenuGameType extends GameType
 		return MyMenuPlayerEntity.class;
 	}
 	
+	@Override
+	public void inGameActionCalled(String action, Entity source)
+	{
+		
+	}
+	
 	static
 	{
 		initEntityList();
