@@ -66,7 +66,7 @@ public class MyUIButton extends Entity
 	
 	protected void activate(World world)
 	{
-		
+		world.sendGameAction(action, this);
 	}
 	
 	public int getWidth()

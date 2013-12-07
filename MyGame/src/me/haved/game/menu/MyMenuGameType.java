@@ -37,7 +37,7 @@ public class MyMenuGameType extends GameType
 	@Override
 	public void inGameActionCalled(String action, Entity source)
 	{
-		
+		System.out.println("Action sent to MyMenuGameType: " + action);
 	}
 	
 	static

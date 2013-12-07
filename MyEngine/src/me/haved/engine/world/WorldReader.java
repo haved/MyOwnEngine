@@ -35,7 +35,7 @@ public final class WorldReader
 			
 			reader.close();
 			
-			return new World(entities);
+			return new World(gameType, entities);
 		}
 		catch(Exception e)
 		{

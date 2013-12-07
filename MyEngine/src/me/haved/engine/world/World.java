@@ -37,7 +37,12 @@ public class World
 			e.render();
 		}
 	}
-
+	
+	public void sendGameAction(String action, Entity source)
+	{
+		getGameType().inGameActionCalled(action, source);
+	}
+	
 	public GameType getGameType()
 	{
 		return gameType;
