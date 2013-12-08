@@ -5,6 +5,18 @@ import me.haved.engine.entity.PlayerEntity;
 
 public abstract class GameType
 {
+	private GameCanvas currentCanvas;
+	
+	public void setCanvas(GameCanvas gameCanvas)
+	{
+		this.currentCanvas = gameCanvas;
+	}
+	
+	protected GameCanvas getCanvas()
+	{
+		return currentCanvas;
+	}
+	
 	public abstract String getAssetLocation();
 	
 	public abstract String getWorldLocation();

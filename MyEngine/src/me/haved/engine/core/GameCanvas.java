@@ -8,6 +8,10 @@ import me.haved.engine.world.WorldUniverse;
 
 public class GameCanvas
 {
+	private boolean showLoading;
+	private Class<? extends GameType> nextGameType;
+	private String nextWorld;
+	
 	private GameType gameType;
 	private PlayerEntity playerEntity;
 	private World world;
@@ -29,11 +33,19 @@ public class GameCanvas
 		world.render();
 	}
 	
+	public void setGameTypeToBeLoaded(Class<? extends GameType> clazz, String world)
+	{
+		this.nextGameType = clazz;
+		this.nextWorld = world;
+		this.showLoading = true;
+	}
+	
 	public void loadGameType(Class<? extends GameType> clazz)
 	{
 		try
 		{
 			gameType = clazz.newInstance();
+			gameType.setCanvas(this);
 			playerEntity = gameType.getPlayerEntity().newInstance();
 			WorldUniverse.loadWorlds(new File(gameType.getWorldLocation()), gameType);
 		}

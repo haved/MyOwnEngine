@@ -5,6 +5,7 @@ import java.util.HashMap;
 import me.haved.engine.core.GameType;
 import me.haved.engine.entity.Entity;
 import me.haved.engine.entity.PlayerEntity;
+import me.haved.game.core.MyGameType;
 
 public class MyMenuGameType extends GameType
 {
@@ -37,7 +38,8 @@ public class MyMenuGameType extends GameType
 	@Override
 	public void inGameActionCalled(String action, Entity source)
 	{
-		System.out.println("Action sent to MyMenuGameType: " + action);
+		System.out.println("Action sent to MyMenuGameType:" + action);
+		getCanvas().setGameTypeToBeLoaded(MyGameType.class, "TestWorld");
 	}
 	
 	static
