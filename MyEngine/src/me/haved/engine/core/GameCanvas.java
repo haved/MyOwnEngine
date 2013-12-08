@@ -27,13 +27,14 @@ public class GameCanvas
 	
 	public void update()
 	{
-		tryLoadNextGameType();
+		tryLoadNextGameType(); //Only if it has one!
 		
-		if(showLoading)
+		if(showLoading) //If it is showing the loading screen.
 		{
-			waitForInput();
+			waitForInput(); //Will see if the player wants to end the loading screen.
 		}
-		else
+		
+		if(!showLoading) //If it is no longer true, tick the world;
 		{
 			updateWorld();
 		}
