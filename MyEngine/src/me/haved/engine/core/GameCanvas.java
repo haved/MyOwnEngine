@@ -3,6 +3,7 @@ package me.haved.engine.core;
 import java.io.File;
 
 import org.lwjgl.input.Keyboard;
+import org.newdawn.slick.Color;
 
 import me.haved.engine.entity.PlayerEntity;
 import me.haved.engine.render.RenderEngine;
@@ -87,17 +88,19 @@ public class GameCanvas
 	private void renderLoadingScreen()
 	{
 		hasShownLoading = true;
+		
+		RenderEngine.setColor4f(0.552f,	0.933f, 0.933f, 1);
+		RenderEngine.drawRect(0, 0, Window.getWidth(), Window.getHeight());
+		
 		if(nextGameType != null)
 		{
 			//Is currently loading.
-			RenderEngine.setColor4f(1, 1, 0.5f, 1);
-			RenderEngine.drawRect(100, 300, 400, 200);
+			RenderEngine.drawText(500, 500, "Loading. Please wait...", Color.black);
 		}
 		else
 		{
 			//Is done loading, hit enter.
-			RenderEngine.setColor4f(1, 0.5f, 1, 1);
-			RenderEngine.drawRect(100, 300, 400, 200);
+			RenderEngine.drawText(500, 500, "Press 'enter' to continue", Color.black);
 		}
 	}
 	

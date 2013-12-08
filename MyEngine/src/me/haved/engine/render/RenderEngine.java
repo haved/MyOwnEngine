@@ -21,7 +21,11 @@ public final class RenderEngine
 	
 	public static void initOrtho(int width, int height)
 	{
-		glDisable(GL_DEPTH_BUFFER_BIT);
+		glShadeModel(GL_SMOOTH);
+		glDisable(GL_DEPTH_TEST);
+		glDisable(GL_LIGHTING);
+		
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
@@ -74,7 +78,9 @@ public final class RenderEngine
 	
 	private static void drawText(float x, float y, String chars, Color color, TrueTypeFont font)
 	{
+		glEnable(GL_BLEND);
 		font.drawString(x, y, chars, color);
+		glDisable(GL_BLEND);
 	}
 	
 	public static void pushTranslation(float x, float y)

@@ -24,6 +24,7 @@ public class MainEngine
 		Window.setResizable(info.resizable);
 		Window.setVSync(info.vsych);
 		
+		RenderEngine.init();
 		RenderEngine.initOrtho(info.windowResX, info.windowResY);
 		
 		canvas.loadGameType(info.clazz);
