@@ -4,6 +4,8 @@ import static org.lwjgl.opengl.GL11.*;
 
 import java.awt.Font;
 
+import me.haved.engine.asset.AssetLib;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.TrueTypeFont;
 
@@ -33,6 +35,11 @@ public final class RenderEngine
 		glMatrixMode(GL_MODELVIEW);
 	}
 	
+	public static void bindTexture(String name)
+	{
+		AssetLib.getTexture(name).bindTexture();
+	}
+	
 	public static void clearColorBuffer()
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -41,6 +48,11 @@ public final class RenderEngine
 	public static void setColor4f(float red, float green, float blue, float alpha)
 	{
 		glColor4f(red, green, blue, alpha);
+	}
+	
+	public static void clearColor()
+	{
+		setColor4f(1, 1, 1, 1);
 	}
 	
 	public static void drawRect(float x, float y, float width, float height)
@@ -57,6 +69,35 @@ public final class RenderEngine
 			glVertex2f(0,     height);
 		}
 		glEnd();
+		
+		glPopMatrix();
+	}
+	
+	public static void drawTextureRect(float x, float y, float width, float height)
+	{
+		drawTextureRect(x, y, width, height, 0, 0, 1, 1);
+	}
+	
+	public static void drawTextureRect(float x, float y, float width, float height, float tx, float ty, float tx2, float ty2)
+	{
+		glPushMatrix();
+		
+		glTranslatef(x, y, 0);
+		
+		glEnable(GL_TEXTURE_2D);
+		glBegin(GL_QUADS);
+		{
+			glTexCoord2f(tx , ty);
+			glVertex2f(0,     0);
+			glTexCoord2f(tx2, ty);
+			glVertex2f(width, 0);
+			glTexCoord2f(tx2, ty2);
+			glVertex2f(width, height);
+			glTexCoord2f(tx , ty2);
+			glVertex2f(0,     height);
+		}
+		glEnd();
+		glDisable(GL_TEXTURE_2D);
 		
 		glPopMatrix();
 	}

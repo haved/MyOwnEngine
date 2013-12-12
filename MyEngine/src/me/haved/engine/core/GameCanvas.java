@@ -5,6 +5,7 @@ import java.io.File;
 import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Color;
 
+import me.haved.engine.asset.AssetLib;
 import me.haved.engine.entity.PlayerEntity;
 import me.haved.engine.render.RenderEngine;
 import me.haved.engine.world.World;
@@ -112,7 +113,6 @@ public class GameCanvas
 		this.showLoading = true;
 	}
 	
-	
 	public void loadGameType(Class<? extends GameType> clazz)
 	{
 		try
@@ -120,6 +120,9 @@ public class GameCanvas
 			gameType = clazz.newInstance();
 			gameType.setCanvas(this);
 			playerEntity = gameType.getPlayerEntity().newInstance();
+			
+			AssetLib.unloadAssets(); //If there are any previous assets loaded.
+			AssetLib.loadAssets(gameType.getAssetLocation());
 			WorldUniverse.loadWorlds(new File(gameType.getWorldLocation()), gameType);
 		}
 		catch(Exception e)
@@ -127,7 +130,6 @@ public class GameCanvas
 			e.printStackTrace(); 
 		}
 	}
-	
 	
 	public void setWorld(String worldName)
 	{

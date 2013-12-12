@@ -1,22 +1,21 @@
 package me.haved.game.entity;
 
 import me.haved.engine.entity.MovingEntity;
-import me.haved.engine.lib.Time;
 import me.haved.engine.render.RenderEngine;
 import me.haved.engine.world.World;
 
 public class MyBoxEntity extends MovingEntity
 {
-	private int width = 60;
-	private int height = 60;
+	protected int width = 60;
+	protected int height = 60;
 	
-	private float red = 1f;
-	private float green = 0.5f;
-	private float blue = 0.5f;
+	protected float red = 1f;
+	protected float green = 1f;
+	protected float blue = 1f;
 	
 	public MyBoxEntity()
 	{
-		ySpeed = -1000;
+		xSpeed = 3;
 	}
 	
 	@Override
@@ -24,7 +23,6 @@ public class MyBoxEntity extends MovingEntity
 	{
 		super.update(world);
 		
-		ySpeed += 3 * Time.delta();
 		move(world);
 	}
 	
