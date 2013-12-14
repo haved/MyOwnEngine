@@ -14,6 +14,7 @@ public class InitInfo
 	
 	public boolean fullscreen = true;
 	
+	public int fps = 9999;
 	public boolean vsych = false;
 	public boolean resizable = false;
 	

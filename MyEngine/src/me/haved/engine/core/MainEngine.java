@@ -23,6 +23,7 @@ public class MainEngine
 		Window.setTitle(info.windowTitle);
 		Window.setResizable(info.resizable);
 		Window.setVSync(info.vsych);
+		Window.setFps(info.fps);
 		
 		RenderEngine.init();
 		RenderEngine.initOrtho(info.windowResX, info.windowResY);
@@ -41,6 +42,8 @@ public class MainEngine
 			canvas.update();
 			canvas.render();
 			Window.update();
+			
+			Window.sync();
 			
 			fpsCounter.newFrame();
 			Time.stopDeltaTimer();

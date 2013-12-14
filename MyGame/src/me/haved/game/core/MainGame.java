@@ -9,6 +9,7 @@ public class MainGame
 	public static void main(String[] args)
 	{
 		InitInfo info = new InitInfo(MyMenuGameType.class, "MenuScreen");
+		info.fps = 140;
 		
 		MainEngine.initEngine(info);
 	}

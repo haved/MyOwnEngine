@@ -8,7 +8,7 @@ import org.lwjgl.opengl.DisplayMode;
 
 public final class Window
 {
-	public static int fps = 24;
+	public static int fps;
 	
 	public static void setFps(int fps)
 	{

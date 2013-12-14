@@ -64,8 +64,8 @@ public class GameCanvas
 	
 	private void updateWorld()
 	{
-		playerEntity.update(world);
 		world.update();
+		playerEntity.update(world);
 	}
 	
 	public void render()
@@ -82,8 +82,8 @@ public class GameCanvas
 	
 	private void renderWorld()
 	{
-		playerEntity.render();
 		world.render();
+		playerEntity.render();
 	}
 	
 	private void renderLoadingScreen()
