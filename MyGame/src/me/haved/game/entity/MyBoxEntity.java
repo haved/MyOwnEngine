@@ -15,7 +15,7 @@ public class MyBoxEntity extends MovingEntity
 	
 	public MyBoxEntity()
 	{
-		xSpeed = 3;
+		
 	}
 	
 	@Override

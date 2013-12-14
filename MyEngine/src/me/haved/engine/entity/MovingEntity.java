@@ -13,4 +13,16 @@ public class MovingEntity extends Entity
 		x += xSpeed * Time.delta() / 1000;
 		y += ySpeed * Time.delta() / 1000;
 	}
+	
+	public boolean setProperty(String propertyName, String value)
+	{
+		if(super.setProperty(propertyName, value)) return true;
+		
+		switch(propertyName)
+		{
+		case "xSpeed":this.xSpeed = Float.parseFloat(value); return true;
+		case "ySpeed":this.ySpeed = Float.parseFloat(value); return true;
+		default:return false;
+		}
+	}
 }

@@ -12,9 +12,28 @@ public class MyTextureBoxEntity extends MyBoxEntity
 	{
 		ySpeed += 3 * Time.delta();
 		
-		if(y + height > Window.getHeight())
+		if(y < 0)
 		{
+			y = 0;
+			ySpeed = -ySpeed;
+		}
+		
+		if(y + height > RenderEngine.getHeight())
+		{
+			y=Window.getHeight() - height;
 			ySpeed =-ySpeed;
+		}
+		
+		if(x < 0)
+		{
+			x = 0;
+			xSpeed = -xSpeed;
+		}
+		
+		if(x + width > RenderEngine.getWidth())
+		{
+			x=Window.getWidth() - width;
+			xSpeed =-xSpeed;
 		}
 		
 		move(world);

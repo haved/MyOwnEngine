@@ -11,6 +11,9 @@ import org.newdawn.slick.TrueTypeFont;
 
 public final class RenderEngine
 {
+	private static int width;
+	private static int height;
+	
 	private static TrueTypeFont defaultFont;
 	private static TrueTypeFont customFont;
 	
@@ -23,10 +26,14 @@ public final class RenderEngine
 	
 	public static void initOrtho(int width, int height)
 	{
+		RenderEngine.width = width;
+		RenderEngine.height = height;
+		
 		glShadeModel(GL_SMOOTH);
 		glDisable(GL_DEPTH_TEST);
 		glDisable(GL_LIGHTING);
 		
+		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		
 		glMatrixMode(GL_PROJECTION);
@@ -57,6 +64,8 @@ public final class RenderEngine
 	
 	public static void drawRect(float x, float y, float width, float height)
 	{
+		glDisable(GL_TEXTURE_2D);
+		
 		glPushMatrix();
 		
 		glTranslatef(x, y, 0);
@@ -80,11 +89,12 @@ public final class RenderEngine
 	
 	public static void drawTextureRect(float x, float y, float width, float height, float tx, float ty, float tx2, float ty2)
 	{
+		glEnable(GL_TEXTURE_2D);
+		
 		glPushMatrix();
 		
 		glTranslatef(x, y, 0);
 		
-		glEnable(GL_TEXTURE_2D);
 		glBegin(GL_QUADS);
 		{
 			glTexCoord2f(tx , ty);
@@ -97,7 +107,6 @@ public final class RenderEngine
 			glVertex2f(0,     height);
 		}
 		glEnd();
-		glDisable(GL_TEXTURE_2D);
 		
 		glPopMatrix();
 	}
@@ -119,9 +128,8 @@ public final class RenderEngine
 	
 	private static void drawText(float x, float y, String chars, Color color, TrueTypeFont font)
 	{
-		glEnable(GL_BLEND);
+		glEnable(GL_TEXTURE_2D);
 		font.drawString(x, y, chars, color);
-		glDisable(GL_BLEND);
 	}
 	
 	public static void pushTranslation(float x, float y)
@@ -133,5 +141,25 @@ public final class RenderEngine
 	public static void releaseTransform()
 	{
 		glPopMatrix();
+	}
+
+	public static int getWidth()
+	{
+		return width;
+	}
+
+	public static void setWidth(int width)
+	{
+		RenderEngine.width = width;
+	}
+
+	public static int getHeight()
+	{
+		return height;
+	}
+
+	public static void setHeight(int height)
+	{
+		RenderEngine.height = height;
 	}
 }
