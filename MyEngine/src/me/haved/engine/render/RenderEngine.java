@@ -138,6 +138,20 @@ public final class RenderEngine
 		glTranslatef(x, y, 0);
 	}
 	
+	public static void pushRotation(float x, float y, float z)
+	{
+		glPushMatrix();
+		glRotatef(x, 1, 0, 0);
+		glRotatef(y, 0, 1, 0);
+		glRotatef(z, 0, 0, 1);
+	}
+	
+	public static void pushZRotation(float angle)
+	{
+		glPushMatrix();
+		glRotatef(angle, 0, 0, 1);
+	}
+	
 	public static void releaseTransform()
 	{
 		glPopMatrix();

@@ -7,6 +7,7 @@ import org.newdawn.slick.Color;
 
 import me.haved.engine.asset.AssetLib;
 import me.haved.engine.entity.PlayerEntity;
+import me.haved.engine.render.Camera;
 import me.haved.engine.render.RenderEngine;
 import me.haved.engine.world.World;
 import me.haved.engine.world.WorldUniverse;
@@ -18,6 +19,7 @@ public class GameCanvas
 	private Class<? extends GameType> nextGameType;
 	private String nextWorld;
 	
+	private Camera cam;
 	private GameType gameType;
 	private PlayerEntity playerEntity;
 	private World world;
@@ -64,8 +66,8 @@ public class GameCanvas
 	
 	private void updateWorld()
 	{
-		world.update();
-		playerEntity.update(world);
+		world.update(playerEntity);
+		playerEntity.updateCamera(cam);
 	}
 	
 	public void render()
@@ -82,8 +84,7 @@ public class GameCanvas
 	
 	private void renderWorld()
 	{
-		world.render();
-		playerEntity.render();
+		world.render(playerEntity, cam);
 	}
 	
 	private void renderLoadingScreen()
@@ -120,6 +121,8 @@ public class GameCanvas
 			gameType = clazz.newInstance();
 			gameType.setCanvas(this);
 			playerEntity = gameType.getPlayerEntity().newInstance();
+			
+			cam = new Camera();
 			
 			AssetLib.unloadAssets(); //If there are any previous assets loaded.
 			AssetLib.loadAssets(gameType.getAssetLocation());

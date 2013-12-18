@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import me.haved.engine.core.GameType;
 import me.haved.engine.entity.Entity;
+import me.haved.engine.entity.PlayerEntity;
+import me.haved.engine.render.Camera;
+import me.haved.engine.render.RenderEngine;
 
 public class World
 {
@@ -22,20 +25,28 @@ public class World
 		this.entities = entities;
 	}
 	
-	public void update()
+	public void update(PlayerEntity player)
 	{
 		for(Entity e:entities)
 		{
 			e.update(this);
 		}
+		
+		player.update(this);
 	}
 	
-	public void render()
+	public void render(PlayerEntity player, Camera cam)
 	{
+		RenderEngine.pushTranslation(-cam.getCameraPosition().getX(), -cam.getCameraPosition().getY());
+		
 		for(Entity e:entities)
 		{
 			e.render();
 		}
+		
+		player.render();
+		
+		RenderEngine.releaseTransform();
 	}
 	
 	public void sendGameAction(String action, Entity source)

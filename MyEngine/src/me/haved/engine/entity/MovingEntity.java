@@ -10,8 +10,8 @@ public class MovingEntity extends Entity
 	
 	public void move(World world)
 	{
-		x += xSpeed * Time.delta() / 1000;
-		y += ySpeed * Time.delta() / 1000;
+		x += xSpeed * Time.delta();
+		y += ySpeed * Time.delta();
 	}
 	
 	public boolean setProperty(String propertyName, String value)

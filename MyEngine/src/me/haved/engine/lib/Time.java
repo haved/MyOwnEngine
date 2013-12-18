@@ -3,7 +3,7 @@ package me.haved.engine.lib;
 public final class Time
 {
 	private static long startTime;
-	private static long deltaTime;
+	private static float deltaTime;
 	
 	public static void startDeltaTimer()
 	{
@@ -12,20 +12,20 @@ public final class Time
 	
 	public static void stopDeltaTimer()
 	{
-		setDeltaTime(System.currentTimeMillis() - startTime);
+		setDeltaTime((System.currentTimeMillis() - startTime) / 1000f);
 	}
 	
-	public static void setDeltaTime(long newDelta)
+	public static void setDeltaTime(float newDelta)
 	{
 		Time.deltaTime = newDelta;
 	}
 	
-	public static long getDeltaTime()
+	public static float getDeltaTime()
 	{
 		return Time.deltaTime;
 	}
 	
-	public static long delta()
+	public static float delta()
 	{
 		return getDeltaTime();
 	}

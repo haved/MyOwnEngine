@@ -10,6 +10,8 @@ public class MainGame
 	{
 		InitInfo info = new InitInfo(MyMenuGameType.class, "MenuScreen");
 		info.fps = 140;
+		info.windowResX = 1600;
+		info.windowResY = 900;
 		
 		MainEngine.initEngine(info);
 	}

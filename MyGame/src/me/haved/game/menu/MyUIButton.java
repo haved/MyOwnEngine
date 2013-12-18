@@ -7,7 +7,6 @@ import me.haved.engine.world.World;
 
 public class MyUIButton extends Entity
 {
-	private int width, height;
 	private String text;
 	private String action;
 	
@@ -68,26 +67,6 @@ public class MyUIButton extends Entity
 	{
 		world.sendGameAction(action, this);
 	}
-	
-	public int getWidth()
-	{
-		return width;
-	}
-
-	public void setWidth(int width)
-	{
-		this.width = width;
-	}
-
-	public int getHeight()
-	{
-		return height;
-	}
-
-	public void setHeight(int height)
-	{
-		this.height = height;
-	}
 
 	public String getText()
 	{
@@ -116,8 +95,6 @@ public class MyUIButton extends Entity
 		
 		switch(propertyName)
 		{
-		case "width":this.setWidth(Integer.parseInt(value)); return true;
-		case "height":this.setHeight(Integer.parseInt(value)); return true;
 		case "text":this.setText(value); return true;
 		case "action":this.setAction(value); return true;
 		default:return false;
