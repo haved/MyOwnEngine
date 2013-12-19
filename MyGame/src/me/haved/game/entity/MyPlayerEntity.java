@@ -10,56 +10,52 @@ import me.haved.engine.render.RenderEngine;
 import me.haved.engine.world.World;
 public class MyPlayerEntity extends MovingEntity implements PlayerEntity
 {
-	private static final float SPEED = 750;
-	
-	protected float rot;
+	private static final float SPEED = 3000;
+	private static final float GRAVITY = 3000;
+	private static final float FRIC = 10;
+	private static final float JUMP = 1400;
 	
 	public MyPlayerEntity()
 	{
-		this.width = 10;
-		this.height = 10;
+		this.width = 32;
+		this.height = 64;
 	}
 	
 	@Override
 	public void update(World world)
 	{
-		xSpeed = 0;
-		ySpeed = 0;
+		ySpeed += GRAVITY * Time.delta();
+		xSpeed -= xSpeed * FRIC * Time.delta();
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_LEFT))
 		{
-			rot -= Time.delta() * 4;
+			xSpeed -= Time.delta() * SPEED;
 		}
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_RIGHT))
 		{
-			rot += Time.delta() * 4;
+			xSpeed += Time.delta() * SPEED;
 		}
 		
-		if(Keyboard.isKeyDown(Keyboard.KEY_UP))
+		if(Keyboard.isKeyDown(Keyboard.KEY_SPACE) && y + height >= 1000)
 		{
-			xSpeed = (float)Math.cos(rot) * SPEED;
-			ySpeed = (float)Math.sin(rot) * SPEED;
+			ySpeed = -JUMP;
 		}
 		
 		move(world);
+		
+		if(y + height >= 1000)
+		{
+			y = 1000 - height;
+			ySpeed = 0;
+		}
 	}
 
 	@Override
 	public void render()
 	{
-		RenderEngine.pushTranslation(x + width/2, y + height/2);
-		
 		RenderEngine.setColor4f(1, 0.5f, 1, 1);
-		RenderEngine.drawRect(-width/2, -height/2, width, height);
-		
-		RenderEngine.pushZRotation((float)Math.toDegrees(rot));
-		
-		RenderEngine.setColor4f(0.7f, 1, 0.5f, 1);
-		RenderEngine.drawRect(-4, -4, 30, 8);
-		
-		RenderEngine.releaseTransform();
-		RenderEngine.releaseTransform();
+		RenderEngine.drawRect(x, y, width, height);
 	}
 	
 	@Override

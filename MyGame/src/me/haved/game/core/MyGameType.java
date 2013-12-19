@@ -56,6 +56,7 @@ public class MyGameType extends GameType
 		addEntityEntry(MyBoxEntity.class);
 		addEntityEntry(SpinningBoxEntity.class);
 		addEntityEntry(MyTextureBoxEntity.class);
+		addEntityEntry(MyImageEntity.class);
 	}
 	
 	private static void addEntityEntry(Class<? extends Entity> entity)

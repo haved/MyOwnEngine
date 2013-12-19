@@ -12,6 +12,9 @@ public class World
 {
 	private GameType gameType;
 	
+	private int width;
+	private int height;
+	
 	private ArrayList<Entity> entities;
 	
 	public World(GameType gameType)
@@ -57,5 +60,29 @@ public class World
 	public GameType getGameType()
 	{
 		return gameType;
+	}
+
+	
+	public int getWidth()
+	{
+		return width;
+	}
+
+	
+	public void setWidth(int width)
+	{
+		this.width = width;
+	}
+
+	
+	public int getHeight()
+	{
+		return height;
+	}
+
+	
+	public void setHeight(int height)
+	{
+		this.height = height;
 	}
 }
