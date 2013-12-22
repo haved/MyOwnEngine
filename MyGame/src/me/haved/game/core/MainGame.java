@@ -12,8 +12,8 @@ public class MainGame
 		info.fps = 140;
 		info.canvasSizeX = 1600;
 		info.canvasSizeY = 900;
-		info.windowSizeX = 1920;
-		info.windowSizeY = 1080;
+		info.windowSizeX = 1600;
+		info.windowSizeY = 900;
 		
 		MainEngine.initEngine(info);
 	}

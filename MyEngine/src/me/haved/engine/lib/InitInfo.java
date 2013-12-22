@@ -8,12 +8,17 @@ public class InitInfo
 	public String world;
 	
 	public String windowTitle = "My GameEngine";
-	
+	/*List of 16:9 resolutions:
+	 * 1024  :  576
+	 * 1280  :  720
+	 * 1600  :  900
+	 * 1920  :  1080
+	 * */
 	public int windowSizeX = 1024;
-	public int windowSizeY = 768;
+	public int windowSizeY = 576;
 	
-	public int canvasSizeX = 1024;
-	public int canvasSizeY = 768;
+	public int canvasSizeX = 1600;
+	public int canvasSizeY = 900;
 	
 	public boolean fullscreen = true;
 	

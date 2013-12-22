@@ -1,5 +1,7 @@
 package me.haved.game.menu;
 
+import org.newdawn.slick.Color;
+
 import me.haved.engine.entity.Entity;
 import me.haved.engine.lib.Input;
 import me.haved.engine.render.RenderEngine;
@@ -48,19 +50,24 @@ public class MyUIButton extends Entity
 	@Override
 	public void render()
 	{
+		RenderEngine.clearColor();
+		RenderEngine.bindTexture("gui.png");
+		
+		int texY = 0;
+		int textShift = 0;
+		
 		if(mouseOver & buttonDown)
 		{
-			RenderEngine.setColor4f(1.0f, 1f, 0.5f, 1);
+			texY = 16 * 2;
+			textShift = 2;
 		}
 		else if(mouseOver)
 		{
-			RenderEngine.setColor4f(1.0f, 0.8f, 0.6f, 1);
+			texY = 16;
 		}
-		else
-		{
-			RenderEngine.setColor4f(1.0f, 0.7f, 0.4f, 1);
-		}
-		RenderEngine.drawRect(getX(), getY(), getWidth(), getHeight());
+		
+		RenderEngine.drawTextureRect(x, y, width, height, 0, texY, 104, texY + 16);
+		RenderEngine.drawText(x + (width - RenderEngine.getTextWidth(text)) / 2 + textShift, y + (height - RenderEngine.getTextHeight(text)) / 2 + textShift, text, Color.white);
 	}
 	
 	protected void activate(World world)

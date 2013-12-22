@@ -5,12 +5,15 @@ import static org.lwjgl.opengl.GL11.*;
 import java.awt.Font;
 
 import me.haved.engine.asset.AssetLib;
+import me.haved.engine.asset.TextureAsset;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.TrueTypeFont;
 
 public final class RenderEngine
 {
+	private static int currentTexSize;
+	
 	private static int windowX, windowY;
 	private static int canvasX, canvasY;
 	private static float scaleX, scaleY;
@@ -49,7 +52,12 @@ public final class RenderEngine
 	
 	public static void bindTexture(String name)
 	{
-		AssetLib.getTexture(name).bindTexture();
+		TextureAsset texture = AssetLib.getTexture(name);
+		if(texture != null)
+		{
+			currentTexSize = texture.getSize();
+			texture.bindTexture();
+		}
 	}
 	
 	public static void clearColorBuffer()
@@ -89,11 +97,17 @@ public final class RenderEngine
 	
 	public static void drawTextureRect(float x, float y, float width, float height)
 	{
-		drawTextureRect(x, y, width, height, 0, 0, 1, 1);
+		drawTextureRectNormalized(x, y, width, height, 0, 0, 1, 1);
 	}
 	
 	public static void drawTextureRect(float x, float y, float width, float height, float tx, float ty, float tx2, float ty2)
 	{
+		drawTextureRectNormalized(x, y, width, height, (tx + 0.2f) / currentTexSize, (ty + 0.2f) / currentTexSize, (tx2 - 0.2f) / currentTexSize, (ty2 - 0.2f) / currentTexSize);
+	}
+	
+	public static void drawTextureRectNormalized(float x, float y, float width, float height, float tx, float ty, float tx2, float ty2)
+	{
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 		glEnable(GL_TEXTURE_2D);
 		
 		glPushMatrix();
@@ -176,5 +190,25 @@ public final class RenderEngine
 	public static int getHeight()
 	{
 		return canvasY;
+	}
+	
+	public static int getTextWidth(String text)
+	{
+		return defaultFont.getWidth(text);
+	}
+	
+	public static int getTextHeight(String text)
+	{
+		return defaultFont.getHeight(text);
+	}
+	
+	public static float getCanvasScaleX()
+	{
+		return scaleX;
+	}
+	
+	public static float getCanvasScaleY()
+	{
+		return scaleY;
 	}
 }

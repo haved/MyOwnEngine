@@ -10,6 +10,11 @@ public class TextureAsset extends Asset
 {
 	private Texture texture;
 	
+	public int getSize()
+	{
+		return texture.getTextureWidth();
+	}
+	
 	@Override
 	public void loadAsset(File f)
 	{

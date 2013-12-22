@@ -1,6 +1,7 @@
 package me.haved.engine.lib;
 
 import me.haved.engine.core.Window;
+import me.haved.engine.render.RenderEngine;
 
 import org.lwjgl.input.Mouse;
 
@@ -8,12 +9,12 @@ public final class Input
 {
 	public static int getMouseX()
 	{
-		return Mouse.getX();
+		return (int)(Mouse.getX() / RenderEngine.getCanvasScaleX());
 	}
 	
 	public static int getMouseY()
 	{
-		return Window.getHeight() - Mouse.getY();
+		return (int)((Window.getHeight() - Mouse.getY()) / RenderEngine.getCanvasScaleY());
 	}
 	
 	public static boolean isLMB()
