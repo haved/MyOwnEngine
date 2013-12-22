@@ -9,5 +9,5 @@ public interface PlayerEntity
 	
 	public void render();
 	
-	public void updateCamera(Camera cam);
+	public void updateCamera(World world, Camera cam);
 }

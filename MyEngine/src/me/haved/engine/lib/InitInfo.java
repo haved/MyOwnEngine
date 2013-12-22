@@ -9,8 +9,11 @@ public class InitInfo
 	
 	public String windowTitle = "My GameEngine";
 	
-	public int windowResX = 1024;
-	public int windowResY = 768;
+	public int windowSizeX = 1024;
+	public int windowSizeY = 768;
+	
+	public int canvasSizeX = 1024;
+	public int canvasSizeY = 768;
 	
 	public boolean fullscreen = true;
 	

@@ -19,14 +19,14 @@ public class MainEngine
 	
 	public void init(InitInfo info)
 	{
-		Window.create(info.windowResX, info.windowResY);
+		Window.create(info.windowSizeX, info.windowSizeY);
 		Window.setTitle(info.windowTitle);
 		Window.setResizable(info.resizable);
 		Window.setVSync(info.vsych);
 		Window.setFps(info.fps);
 		
 		RenderEngine.init();
-		RenderEngine.initOrtho(info.windowResX, info.windowResY);
+		RenderEngine.initOrtho(info.windowSizeX, info.windowSizeY, info.canvasSizeX, info.canvasSizeY);
 		
 		canvas.loadGameType(info.clazz);
 		canvas.setWorld(info.world);

@@ -67,11 +67,13 @@ public class GameCanvas
 	private void updateWorld()
 	{
 		world.update(playerEntity);
-		playerEntity.updateCamera(cam);
+		playerEntity.updateCamera(world, cam);
 	}
 	
 	public void render()
 	{
+		RenderEngine.pushCanvasTransform();
+		
 		if(showLoading)
 		{
 			renderLoadingScreen();
@@ -80,6 +82,8 @@ public class GameCanvas
 		{
 			renderWorld();
 		}
+		
+		RenderEngine.releaseTransform();
 	}
 	
 	private void renderWorld()
@@ -92,17 +96,17 @@ public class GameCanvas
 		hasShownLoading = true;
 		
 		RenderEngine.setColor4f(0.552f,	0.933f, 0.933f, 1);
-		RenderEngine.drawRect(0, 0, Window.getWidth(), Window.getHeight());
+		RenderEngine.drawRect(0, 0, RenderEngine.getWidth(), RenderEngine.getHeight());
 		
 		if(nextGameType != null)
 		{
 			//Is currently loading.
-			RenderEngine.drawText(500, 500, "Loading. Please wait...", Color.black);
+			RenderEngine.drawText(RenderEngine.getWidth() - 200, RenderEngine.getHeight() - 50, "Loading. Please wait...", Color.black);
 		}
 		else
 		{
 			//Is done loading, hit enter.
-			RenderEngine.drawText(500, 500, "Press 'enter' to continue", Color.black);
+			RenderEngine.drawText(RenderEngine.getWidth() - 200, RenderEngine.getHeight() - 50, "Press 'enter' to continue", Color.black);
 		}
 	}
 	

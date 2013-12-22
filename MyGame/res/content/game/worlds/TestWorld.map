@@ -1,3 +1,4 @@
+SIZE-2000,1000
 E-MyImageEntity,x=0,y=0,width=2000,height=1000,src=bg.png
 E-MyBoxEntity,x=400,y=600,width=120,height=10,red=0.15,green=0.25,blue=0.54
 E-MyBoxEntity,x=800,y=300,width=120,height=40,red=0.15,green=0.25,blue=0.54

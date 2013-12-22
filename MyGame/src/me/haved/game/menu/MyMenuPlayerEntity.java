@@ -24,7 +24,7 @@ public class MyMenuPlayerEntity implements PlayerEntity
 	}
 
 	@Override
-	public void updateCamera(Camera cam)
+	public void updateCamera(World world, Camera cam)
 	{
 		
 	}

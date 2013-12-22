@@ -27,6 +27,13 @@ public class MyPlayerEntity extends MovingEntity implements PlayerEntity
 		ySpeed += GRAVITY * Time.delta();
 		xSpeed -= xSpeed * FRIC * Time.delta();
 		
+		input(world);
+		move(world);
+		constrain(world);
+	}
+	
+	private void input(World world)
+	{
 		if(Keyboard.isKeyDown(Keyboard.KEY_LEFT))
 		{
 			xSpeed -= Time.delta() * SPEED;
@@ -41,12 +48,31 @@ public class MyPlayerEntity extends MovingEntity implements PlayerEntity
 		{
 			ySpeed = -JUMP;
 		}
-		
-		move(world);
-		
-		if(y + height >= 1000)
+	}
+	
+	private void constrain(World world)
+	{
+		if(x < 0)
 		{
-			y = 1000 - height;
+			x = 0;
+			xSpeed = 0;
+		}
+		
+		if(y < 0)
+		{
+			y = 0;
+			ySpeed = 0;
+		}
+		
+		if(x + width >= world.getWidth())
+		{
+			x = world.getWidth() - width;
+			xSpeed = 0;
+		}
+		
+		if(y + height >= world.getHeight())
+		{
+			y = world.getHeight() - height;
 			ySpeed = 0;
 		}
 	}
@@ -59,10 +85,13 @@ public class MyPlayerEntity extends MovingEntity implements PlayerEntity
 	}
 	
 	@Override
-	public void updateCamera(Camera cam)
+	public void updateCamera(World world, Camera cam)
 	{
 		float xScroll = this.getX() + (this.width - RenderEngine.getWidth()) / 2;
 		float yScroll = this.getY() + (this.height - RenderEngine.getHeight()) / 2;
+		
+		xScroll = Math.max(Math.min(xScroll, world.getWidth() - RenderEngine.getWidth()), 0);
+		yScroll = Math.max(Math.min(yScroll, world.getHeight() - RenderEngine.getHeight()), 0);
 		
 		cam.setCameraPosition(xScroll, yScroll);
 	}

@@ -30,12 +30,30 @@ public class World
 	
 	public void update(PlayerEntity player)
 	{
-		for(Entity e:entities)
+		updateEntities(player);
+		removeDeadEntities();
+	}
+	
+	private void updateEntities(PlayerEntity player)
+	{
+		for(int i = 0; i < entities.size(); i++)
 		{
-			e.update(this);
+			entities.get(i).update(this);
 		}
 		
 		player.update(this);
+	}
+	
+	private void removeDeadEntities()
+	{
+		for(int i = 0; i < entities.size(); i++)
+		{
+			if(entities.get(i).isAlive() == false)
+			{
+				entities.remove(i);
+				i--;
+			}
+		}
 	}
 	
 	public void render(PlayerEntity player, Camera cam)
@@ -63,24 +81,32 @@ public class World
 	}
 
 	
+	public void addEntity(Entity e)
+	{
+		if(e != null)
+		entities.add(e);
+	}
+	
+	public void setEntities(ArrayList<Entity> entities)
+	{
+		this.entities = entities;
+	}
+	
 	public int getWidth()
 	{
 		return width;
 	}
 
-	
 	public void setWidth(int width)
 	{
 		this.width = width;
 	}
 
-	
 	public int getHeight()
 	{
 		return height;
 	}
 
-	
 	public void setHeight(int height)
 	{
 		this.height = height;

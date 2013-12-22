@@ -11,8 +11,9 @@ import org.newdawn.slick.TrueTypeFont;
 
 public final class RenderEngine
 {
-	private static int width;
-	private static int height;
+	private static int windowX, windowY;
+	private static int canvasX, canvasY;
+	private static float scaleX, scaleY;
 	
 	private static TrueTypeFont defaultFont;
 	private static TrueTypeFont customFont;
@@ -24,10 +25,14 @@ public final class RenderEngine
 		defaultFont = new TrueTypeFont(new Font("Dialog", Font.PLAIN, 18), true);
 	}
 	
-	public static void initOrtho(int width, int height)
+	public static void initOrtho(int windowX, int windowY, int canvasX, int canvasY)
 	{
-		RenderEngine.width = width;
-		RenderEngine.height = height;
+		RenderEngine.windowX = windowX;
+		RenderEngine.windowY = windowY;
+		RenderEngine.canvasX = canvasX;
+		RenderEngine.canvasY = canvasY;
+		RenderEngine.scaleX = RenderEngine.windowX / (float) RenderEngine.canvasX;
+		RenderEngine.scaleY = RenderEngine.windowY / (float) RenderEngine.canvasY;
 		
 		glShadeModel(GL_SMOOTH);
 		glDisable(GL_DEPTH_TEST);
@@ -38,7 +43,7 @@ public final class RenderEngine
 		
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		glOrtho(0, width, height, 0, 1, -1);
+		glOrtho(0, windowX, windowY, 0, 1, -1);
 		glMatrixMode(GL_MODELVIEW);
 	}
 	
@@ -152,6 +157,12 @@ public final class RenderEngine
 		glRotatef(angle, 0, 0, 1);
 	}
 	
+	public static void pushCanvasTransform()
+	{
+		glPushMatrix();
+		glScalef(scaleX, scaleY, 1);
+	}
+	
 	public static void releaseTransform()
 	{
 		glPopMatrix();
@@ -159,21 +170,11 @@ public final class RenderEngine
 
 	public static int getWidth()
 	{
-		return width;
-	}
-
-	public static void setWidth(int width)
-	{
-		RenderEngine.width = width;
+		return canvasX;
 	}
 
 	public static int getHeight()
 	{
-		return height;
-	}
-
-	public static void setHeight(int height)
-	{
-		RenderEngine.height = height;
+		return canvasY;
 	}
 }
